@@ -16,6 +16,29 @@ in less time than I can find and test a third party solution.
 
 This is my proposed solution.
 
+## Compiling and installing
+
+You need a working compiler ```sudo apt install build-essential``` will
+install gcc. Then you can compile it
+
+```
+gcc -Wall -pedantic -std=c99 -o vorketempdaemon vorke-temp-daemon.c
+sudo mv vorketempdaemon /usr/local/bin
+```
+
+Then as superuser create and/or edit the file /etc/rc.local so it looks
+like this:
+
+```
+#!/bin/sh
+
+/usr/local/bin/vorketempdaemon
+
+exit 0
+```
+
+make sure it is executable and reboot.
+
 ## Current status
 
 The daemon is working ok. However the fan speed is constantly changing.
